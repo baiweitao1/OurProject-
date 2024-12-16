@@ -1,7 +1,7 @@
 public class StoreDishes {
 
-    private Dish[] dishes;
-    private int total = 0;  //dual purpose. 1) number of items stored in array, 2) next available index location
+    public Dish[] dishes;
+    public int total = 0;  //dual purpose. 1) number of items stored in array, 2) next available index location
 
     public StoreDishes(int numberItems) {
         dishes = new Dish[numberItems];

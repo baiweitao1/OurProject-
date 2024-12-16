@@ -34,7 +34,7 @@ public class User {
     /**
      * Sets inCurrentUsersLine
      *
-     * @param iinnCurrentUsersLine
+     * @param inCurrentUsersLine
      */
     public void setInCurrentUsersLine(boolean inCurrentUsersLine) {
         this.inCurrentUsersLine = inCurrentUsersLine;

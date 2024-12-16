@@ -9,7 +9,6 @@ public class APP {
         //print out List
         addUsers();//customer or owner
 
-
     }
 
     //Unfinished
