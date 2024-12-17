@@ -8,17 +8,15 @@ import java.util.Scanner;
 public class Owner extends User {
 
     private Scanner input = new Scanner(System.in);
-    private StoreDishes storeDishes;
+    static StoreDishes storeDishes;
 
     public static void main(String[] args) {
         new Owner();
     }
-
-//    Just for test
-//    private Owner() {
-//        addDishes();
-//        runMenu();
-//    }
+    public Owner() {
+        addDishes();
+        runMenu();
+    }
 
     private int mainMenu() {
         System.out.print("""
@@ -65,18 +63,13 @@ public class Owner extends User {
         System.out.println(storeDishes.listDishes());
     }
 
-    //print out a list of all current dishes i.e. that are in the current dish line.
-    private void printCurrentDishes() {
-        System.out.println("List of CURRENT Dishes are:");
-        System.out.println(storeDishes.listCurrentDishes());
-    }
-
     private void addDishes() {
-        //find out from the user how many products they would like to order
+        //find out from the owner how many dishes they would like to add
         System.out.print("How many dishes would you like to have in your Menu?  ");
         int numberDishes = input.nextInt();
 
         storeDishes = new StoreDishes(numberDishes);
+
 
         //ask the user for the details of the products and add them to the order
         for (int i = 0; i < numberDishes; i++) {
@@ -108,18 +101,21 @@ public class Owner extends User {
         //ask what dish that owner want to change
         System.out.println("Current Menu:");
         System.out.println(storeDishes.listDishes());
+
         System.out.println("Enter the Dish Name that you would like to update:  ");
         String name = input.next();
-        boolean isFinded = false;
+
+        boolean isFound = false;
         int index = 0;
         for (int i = 0; i < storeDishes.total; i++) {
             if (storeDishes.dishes[i].dishName.equals(name)) {
-                isFinded = true;
+                isFound = true;
                 index = i;
                 break;
             }
         }
-        if (isFinded) {
+
+        if (isFound) {
             System.out.println("Searched Dish Exist.");
             System.out.println("Update the Name to ->");
             String newName = input.next();

@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class APP {
-
+    static StoreDishes storeDishes;
+    //static StoreDishes storeDishes;
+    static StoreUsers storeUsers;
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
