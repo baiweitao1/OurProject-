@@ -70,6 +70,9 @@ public class Customer extends User {
         System.out.println("List of CURRENT Dishes are:");
         System.out.println(dishLine.listDishes());
         //Total: 1234566 ¥
+
+
+        
     }
 
 
@@ -104,10 +107,6 @@ public class Customer extends User {
         dishLine.add(storeDishes.dishes[index]);
         System.out.println("Order Successfully ");
         System.out.println("Current Ordered Dish Line: " + dishLine.listDishes());
-
-
-
-
 
     }
 

@@ -4,26 +4,26 @@ public class Dish {
     public String dishName = "";
     public double price = -1;
     public String flavor = "";
-    private boolean inCurrentDishesLine = false;
+    //private boolean inCurrentDishesLine = false;
 
     public Dish() {
     }
 
-    /**
-     * Constructor for objects of class Dish
-     *
-     * @param dishName            DishName of the dish
-     * @param price               Price of the dish
-     * @param flavor              Flavor of the dish
-     * @param inCurrentDishesLine Check whether the dish is in the dish current line
-     * This is for Customer
-     */
-    public Dish(String dishName, double price, String flavor, boolean inCurrentDishesLine) {
-        this.dishName = dishName;
-        this.price = price;
-        this.flavor = flavor;
-        this.inCurrentDishesLine = inCurrentDishesLine;
-    }
+//    /**
+//     * Constructor for objects of class Dish
+//     *
+//     * @param dishName            DishName of the dish
+//     * @param price               Price of the dish
+//     * @param flavor              Flavor of the dish
+//     * @param inCurrentDishesLine Check whether the dish is in the dish current line
+//     * This is for Customer
+//     */
+//    public Dish(String dishName, double price, String flavor, boolean inCurrentDishesLine) {
+//        this.dishName = dishName;
+//        this.price = price;
+//        this.flavor = flavor;
+//        this.inCurrentDishesLine = inCurrentDishesLine;
+//    }
 
     /**
      * Constructor for objects of class Dish
@@ -93,31 +93,31 @@ public class Dish {
         this.flavor = flavor;
     }
 
-    /**
-     * getter
-     *
-     * @return inCurrentDishesLine
-     */
-    public boolean isInCurrentDishesLine() {
-        return inCurrentDishesLine;
-    }
+//    /**
+//     * getter
+//     *
+//     * @return inCurrentDishesLine
+//     */
+//    public boolean isInCurrentDishesLine() {
+//        return inCurrentDishesLine;
+//    }
 
-    /**
-     * setter
-     *
-     * @param inCurrentDishesLine
-     */
-    public void setInCurrentDishesLine(boolean inCurrentDishesLine) {
-        this.inCurrentDishesLine = inCurrentDishesLine;
-    }
+//    /**
+//     * setter
+//     *
+//     * @param inCurrentDishesLine
+//     */
+//    public void setInCurrentDishesLine(boolean inCurrentDishesLine) {
+//        this.inCurrentDishesLine = inCurrentDishesLine;
+//    }
 
     /**
      * @return Details of the specific product
      */
     public String toString() {
-        return "Dish description: " + dishName
-                + ", dish's price: " + price
-                + ", flavor: " + flavor
-                + ", currently in dish line: " + inCurrentDishesLine;
+        return " Dish description:   " + dishName
+                + "   ,   dish's price: " + price
+                + "   ,   flavor: " + flavor;
+                //+ "  , currently in dish line: " + inCurrentDishesLine;
     }
 }

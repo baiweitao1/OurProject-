@@ -43,7 +43,7 @@ public class StoreDishes {
         } else {
             String listOfDishes = "";
             for (int i = 0; i < total; i++) {
-                listOfDishes += i + ": " + dishes[i] + "\n";
+                listOfDishes += (i + 1) + " Dish : " + dishes[i] + "\n";
             }
             return listOfDishes;
         }
@@ -65,7 +65,6 @@ public class StoreDishes {
                 return i;
             }
         }
-        System.out.println("Dish " + dishName +" Not found ");
         return -1;
     }
 
