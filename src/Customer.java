@@ -2,17 +2,18 @@ import java.util.Scanner;
 
 public class Customer extends User {
     private Scanner input = new Scanner(System.in);
-    //private StoreDishes storeDishes;
+    private StoreDishes storeDishes;
+    private StoreDishes dishLine;
     //For test
-    static StoreDishes storeDishes = new StoreDishes(2);
-    static StoreDishes dishLine = new StoreDishes(5);
+//    static StoreDishes storeDishes = new StoreDishes(2);
+//    static StoreDishes dishLine = new StoreDishes(5);
 
-    public static void main(String[] args) {
-        storeDishes.add(new Dish("dishName1", 12, "flavor1"));
-        storeDishes.add(new Dish("dishName2", 12, "flavor2"));
-        dishLine.add(new Dish("dishName3", 12, "flavor3"));
-        new Customer();
-    }
+//    public static void main(String[] args) {
+//        storeDishes.add(new Dish("dishName1", 12, "flavor1"));
+//        storeDishes.add(new Dish("dishName2", 12, "flavor2"));
+//        dishLine.add(new Dish("dishName3", 12, "flavor3"));
+//        new Customer();
+//    }
 
     private Customer() {
         runMenu();
@@ -46,7 +47,7 @@ public class Customer extends User {
             }
 
             //pause the program so that the user can read what we just printed to the terminal window
-            System.out.println("\nPress enter key to continue...");
+            System.out.println("Press enter key to continue...");
             input.nextLine();
             input.nextLine(); //second read is required - bug in Scanner class; a String read is ignored straight after reading an int.
 
@@ -69,10 +70,11 @@ public class Customer extends User {
     private void printCurrentDishes() {
         System.out.println("List of CURRENT Dishes are:");
         System.out.println(dishLine.listDishes());
-        //Total: 1234566 ¥
-
-
-        
+        double totalPrice = 0;
+        for (int i = 0; i < dishLine.total; i++) {
+            totalPrice += dishLine.dishes[i].getPrice();
+        }
+        System.out.println("Total Price: " + totalPrice + " ¥");
     }
 
 
@@ -81,7 +83,7 @@ public class Customer extends User {
         System.out.print("How many dishes would you like to have in your Menu?  ");
         int numberDishes = input.nextInt();
 
-        dishLine = new StoreDishes(5);
+        dishLine = new StoreDishes();
 
         //ask the user for the details of the products and add them to the order
         for (int i = 0; i < numberDishes; i++) {
@@ -93,13 +95,13 @@ public class Customer extends User {
         System.out.println("Enter the Dish Name:  ");
         String dishName = input.next();
         //check whether the dish exist in the storeDishes
-        int index = storeDishes.checkDishPosition(dishName);
+        int index = storeDishes.checkUserPosition(dishName);
         if (index == -1) {
             System.out.println("Invalid Dish Name, Try again ");
             orderDish();
         }
         //Check whether the dish has been ordered
-        if (dishLine.checkDishPosition(dishName) >= 0) {
+        if (dishLine.checkUserPosition(dishName) >= 0) {
             System.out.println("Already in Dish Line, Try again ");
             orderDish();
         }
@@ -132,61 +134,19 @@ public class Customer extends User {
         String name = input.next();
 
         //check whether the dish Customer want to remove exist in the dishLine
-        if (dishLine.checkDishPosition(name) == -1) {
+        int index = dishLine.checkUserPosition(name);
+        if ( index == -1) {
             System.out.println("Not in the Dish Line");
             removeDish();
         }
 
-        boolean isRemoved = false;
-        int index = 0;
-        for (int i = 0; i < dishLine.total; i++) {
-            if (dishLine.dishes[i].dishName.equals(name)) {
-                isRemoved = true;
-                index = i;
-                dishLine.total--;
-                dishLine.dishes[i] = null;
-                break;
-            }
-        }
+        dishLine.dishes[index] = null;
+        System.out.println("Dish Remove Successfully");
 
-        if (isRemoved) {
-            System.out.println("Dish Remove Successfully");
-        } else {
-            System.out.println("Dish Not Found");
-        }
-
+        //update the total number of dishLine
         for (int i = index; i < dishLine.total - 1; i++) {
             dishLine.dishes[i] = dishLine.dishes[i + 1];
+            dishLine.total--;
         }
     }
-
-//    //gather the dish data from the user and create a new dish object.
-//    private void addDish(){
-//        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
-//
-//        System.out.print("Enter the Dish Name:  ");
-//        String dishName = input.nextLine();
-//        System.out.print("Enter the Dish Price:  ");
-//        double dishPrice = input.nextDouble();
-//        System.out.print("Enter the Dish's Flavor:  ");
-//        String flavor = input.next();
-//
-//        //Ask the user to type in either a Y or an N.  This is then
-//        //converted to either a True or a False (i.e. a boolean value).
-//        System.out.print("Is this Dish in your current line (y/n): ");
-//        char currentProduct = input.next().charAt(0);
-//        boolean inCurrentDishesLine = false;
-//        if ((currentProduct == 'y') || (currentProduct == 'Y')) {
-//            inCurrentDishesLine = true;
-//        }
-//
-//        boolean isAdded = storeDishes.add(new Dish(dishName, dishPrice, flavor, inCurrentDishesLine));
-//        if (isAdded){
-//            System.out.println("Dish Added Successfully");
-//        }
-//        else{
-//            System.out.println("No Dish Added");
-//        }
-//    }
-
 }

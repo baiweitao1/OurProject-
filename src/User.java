@@ -1,30 +1,43 @@
 public class User {
-    private String username;
+    public String username;
     private int password;
-    private boolean inCurrentUsersLine = false;
+    boolean isOwner = false;
 
     public User() {
     }
 
-    public User(String username, int password, boolean inCurrentUsersLine) {
+    public User(String username, int password, boolean isOwner) {
         this.username = username;
         this.password = password;
-        this.inCurrentUsersLine = inCurrentUsersLine;
+        this.isOwner = isOwner;
     }
 
     /**
-     * Sets username
-     *
+     * get username
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * set username
      * @param username
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * get password
+     * @return password
+     */
+    public int getPassword() {
+        return password;
+    }
 
     /**
-     * Sets password
-     *
+     * set password
      * @param password
      */
     public void setPassword(int password) {
@@ -32,21 +45,25 @@ public class User {
     }
 
     /**
-     * Sets inCurrentUsersLine
-     *
-     * @param inCurrentUsersLine
+     * get boolean which show the user's identity
+     * @return isOwner
      */
-    public void setInCurrentUsersLine(boolean inCurrentUsersLine) {
-        this.inCurrentUsersLine = inCurrentUsersLine;
+    public boolean isIsOwner() {
+        return isOwner;
     }
 
-    public boolean isInCurrentUsersLine() {
-        return inCurrentUsersLine;
+    /**
+     * 设置
+     * @param isOwner
+     */
+    public void setIsOwner(boolean isOwner) {
+        this.isOwner = isOwner;
     }
 
     public String toString() {
-        return "User{username = " + username
-                + ", password = " + password
-                + ", currently in user line: " + inCurrentUsersLine + "}";
+        return "User { username  =  "
+                + username + " ,  password  =  "
+                + password + " ,  isOwner  =  "
+                + isOwner + " }";
     }
 }

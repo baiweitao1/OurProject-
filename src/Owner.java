@@ -10,9 +10,9 @@ public class Owner extends User {
     private Scanner input = new Scanner(System.in);
     static StoreDishes storeDishes;
 
-    public static void main(String[] args) {
-        new Owner();
-    }
+//    public static void main(String[] args) {
+//        new Owner();
+//    }
     public Owner() {
         addDishes();
         runMenu();
@@ -68,7 +68,7 @@ public class Owner extends User {
         System.out.print("How many dishes would you like to have in your Menu?  ");
         int numberDishes = input.nextInt();
 
-        storeDishes = new StoreDishes(numberDishes);
+        storeDishes = new StoreDishes();
 
 
         //ask the user for the details of the products and add them to the order

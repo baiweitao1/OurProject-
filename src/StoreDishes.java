@@ -1,10 +1,13 @@
 public class StoreDishes {
 
-    public Dish[] dishes;
+    public Dish[] dishes = new Dish[10];
     public int total = 0;  //dual purpose. 1) number of items stored in array, 2) next available index location
 
-    public StoreDishes(int numberItems) {
-        dishes = new Dish[numberItems];
+    /**
+     * creat a dish array which is large enough to hold the dishes
+     */
+    public StoreDishes() {
+        dishes = new Dish[15];
     }
 
     private boolean isFull() {
@@ -58,7 +61,7 @@ public class StoreDishes {
      * if the wanted Dish doesn't exist in the Menu, then print out "Searched Dish not found "
      * and return -1
      */
-    public int checkDishPosition(String dishName) {
+    public int checkUserPosition(String dishName) {
         for (int i = 0; i < total; i++) {
             if (dishName.equals(dishes[i].dishName)) {
                 System.out.println("Searched Dish found ");

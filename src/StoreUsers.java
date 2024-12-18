@@ -1,10 +1,13 @@
 public class StoreUsers {
 
-    private User[] users;
-    private int total = 0;
+    public User[] users;
+    public int total = 0;
 
-    public StoreUsers(int numberItems) {
-        users = new User[numberItems];
+    /**
+     * creat a user array which is large enough to hold the users
+     */
+    public StoreUsers() {
+        users = new User[10];
     }
 
     private boolean isFull() {
@@ -51,27 +54,27 @@ public class StoreUsers {
     }
 
     /**
-     * This method builds and returns a String containing all the users in the array
-     * that are in the current user line.
-     * For each user added to the String, the associated index number is included.
-     * @return A String containing all the users in the array, or "No users are in our current
-     * user line", if none in the current line.  If no users are stored in the array, the
-     * returned String indicates this.
+     * This method builds and returns an int which show the position of the user in the users array
+     * @param userName
+     * @return The index where the user is stored in the array,
+     * if the wanted user exist in the users array, then print out "Searched User found "
+     * and return the index of the wanted Dish
+     * if the wanted user doesn't exist in the users array, then print out "Searched User not found "
+     * and return -1
      */
-    public String listCurrentUsers() {
-        if (isEmpty()) {
-            return "No Users in the List";
-        } else {
-            String listOfUsers = "";
-            for (int i = 0; i < total; i++) {
-                if (users[i].isInCurrentUsersLine())
-                    listOfUsers += i + ": " + users[i] + "\n";
+    public int checkUserPosition(String userName) {
+        for (int i = 0; i < total; i++) {
+            if (userName.equals(users[i].getUsername())) {
+                System.out.println("Searched User found ");
+                return i;
             }
-            if (listOfUsers.equals("")) {
-                return "No Users are in our current user line";
-            } else {
-                return listOfUsers;
-            }
+        }
+        return -1;
+    }
+
+    public void removeUser(String userName) {
+        for (int i = 0; i < total; i++) {
+
         }
     }
 
