@@ -134,23 +134,4 @@ public class APP {
             storeUsers.total--;
         }
     }
-
-//    private static void loadUser() {
-//        System.out.println("Input your Username: ");
-//        String name = sc.nextLine();
-//        System.out.println("Input your Password (input 8 pure numbers): ");
-//        String password = sc.nextLine();
-//        for (int i = 0; i < storeUsers.total; i++) {
-//            if (storeUsers.users[i].getUsername().equals(name)) {
-//                if (storeUsers.users[i].getPassword() == Integer.valueOf(password)) {
-//                    System.out.println("Welcome, " + name "!");
-//                    if (!storeUsers.users[i].isOwner) {
-//                        new Customer();
-//                    } else {
-//                        storeUsers.users[i].runMenu();
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
