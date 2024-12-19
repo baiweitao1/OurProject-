@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class APP {
-    public StoreUsers storeUsers;
-    private StoreDishes storeDishes;
-    private StoreDishes dishLine;
+    public static StoreUsers storeUsers;
+    public static StoreDishes storeDishes;
+    public static StoreDishes dishLine;
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -24,18 +24,21 @@ public class APP {
                 input y/n
                     ==>> """);
         String judge = sc.next();
+        if (!judge.equalsIgnoreCase("y")) {
+            System.out.println("The Shop Owner has not come yet. Please wait a second Customer :) ");
+        }
         addUser(judge);
+        new Owner();
         runMenu();
     }
 
-    private void runMenu() {
+    public static void runMenu() {
         int option = mainMenu();
 
         while (option != 0) {
-
             switch (option) {
-                case 1 -> addUser();
-                case 2 -> loadUser();
+                case 1 -> addUser("n");
+                case 2 -> printUsers(storeUsers.users);
                 default -> System.out.println("Invalid option entered: " + option);
             }
 
@@ -53,14 +56,12 @@ public class APP {
         System.exit(0);
     }
 
-    private int mainMenu() {
+    private static int mainMenu() {
         System.out.print("""
-                    User Menu
+                    User's Menu
                     ---------
-                       1) BrowseMenu the Dishes
-                       2) List the ordered Dishes
-                       3) Order some dishes
-                       4) Remove dishes from current order
+                       1) Add a User
+                       2) Print the Current Users
                        0) Exit
                     ==>> """);
         int option = sc.nextInt();
@@ -72,12 +73,9 @@ public class APP {
      * and when we first launch this APP, the first user must be the Owner
      * because the current dishMenu is empty)
      */
-    private void addUser() {
-        User user = new User();
+    private static void addUser() {
         System.out.println("Input your Username: ");
         String name = sc.next();
-        user.setUsername(name);
-
         System.out.println("Input your Password (input 8 pure numbers): ");
         String password = sc.next();
         System.out.println("Input your Password again: ");
@@ -86,30 +84,33 @@ public class APP {
             System.out.println("Passwords do not match!\nTry again.");
             addUser();
         }
-        user.setPassword(Integer.valueOf(password));
-
-        storeUsers.add(user);
         System.out.println("Register successful!");
+
+        //Customer user = new Customer();
+        User user = new User();
+        user.setUsername(name);
+        user.setPassword(Integer.valueOf(password));
+        storeUsers.add(user);
     }
 
-    //Method Overload
-    private void addUser(String judge) {
+    //Method Overload This method is for Owner
+    private static void addUser(String judge) {
         if (judge.toUpperCase().equals("Y")) {
             addUser();
             storeUsers.users[storeUsers.total - 1].setIsOwner(true);
         } else {
             addUser();
+            new Customer();
+            //the default isOwner is false, so we don't need to reset the value of User's isOwner.
         }
     }
 
-    //Unfinished
-    private void printUsers(User[] users) {
-        for (User user : users) {
-            System.out.println(user);
+    private static void printUsers(User[] users) {
+        for (int i = 0; i < storeUsers.total; i++) {
+            System.out.println(storeUsers.users[i]);
         }
     }
 
-    //Unfinished
     private void removeUsers() {
         sc.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
         System.out.println("Current Users:");
@@ -134,6 +135,22 @@ public class APP {
         }
     }
 
-    //Unfinished
-    private void loadUser() {}
+//    private static void loadUser() {
+//        System.out.println("Input your Username: ");
+//        String name = sc.nextLine();
+//        System.out.println("Input your Password (input 8 pure numbers): ");
+//        String password = sc.nextLine();
+//        for (int i = 0; i < storeUsers.total; i++) {
+//            if (storeUsers.users[i].getUsername().equals(name)) {
+//                if (storeUsers.users[i].getPassword() == Integer.valueOf(password)) {
+//                    System.out.println("Welcome, " + name "!");
+//                    if (!storeUsers.users[i].isOwner) {
+//                        new Customer();
+//                    } else {
+//                        storeUsers.users[i].runMenu();
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

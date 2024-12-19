@@ -1,33 +1,33 @@
 import java.util.Scanner;
 
 public class Customer extends User {
+
     private Scanner input = new Scanner(System.in);
-    private StoreDishes storeDishes;
-    private StoreDishes dishLine;
-    //For test
-//    static StoreDishes storeDishes = new StoreDishes(2);
-//    static StoreDishes dishLine = new StoreDishes(5);
 
-//    public static void main(String[] args) {
-//        storeDishes.add(new Dish("dishName1", 12, "flavor1"));
-//        storeDishes.add(new Dish("dishName2", 12, "flavor2"));
-//        dishLine.add(new Dish("dishName3", 12, "flavor3"));
-//        new Customer();
-//    }
+/*    For test
+    static StoreDishes storeDishes = new StoreDishes(2);
+    static StoreDishes dishLine = new StoreDishes(5);
 
-    private Customer() {
+    public static void main(String[] args) {
+        storeDishes.add(new Dish("dishName1", 12, "flavor1"));
+        storeDishes.add(new Dish("dishName2", 12, "flavor2"));
+        dishLine.add(new Dish("dishName3", 12, "flavor3"));
+        new Customer();
+    }*/
+
+    public Customer() {
         runMenu();
     }
 
     private int mainMenu() {
         System.out.print("""
-                Shop Menu
+                Customer's Menu
                 ---------
                    1) BrowseMenu the Dishes
                    2) List the ordered Dishes
                    3) Order some dishes
                    4) Remove dishes from current order
-                   0) Exit
+                   0) Go Back to User Menu
                 ==>> """);
         int option = input.nextInt();
         return option;
@@ -55,24 +55,22 @@ public class Customer extends User {
             option = mainMenu();
         }
 
-        //the user chose option 0, so exit the program
-        System.out.println("Exiting...bye");
-        System.exit(0);
+        APP.runMenu();
     }
 
     //print the dish (the toString method is automatically called).
     private void printDishes() {
         System.out.println("List of Dishes are:");
-        System.out.println(storeDishes.listDishes());
+        System.out.println(APP.storeDishes.listDishes());
     }
 
     //print out a list of all current dishes i.e. that are in the current dish line.
     private void printCurrentDishes() {
         System.out.println("List of CURRENT Dishes are:");
-        System.out.println(dishLine.listDishes());
+        System.out.println(APP.dishLine.listDishes());
         double totalPrice = 0;
-        for (int i = 0; i < dishLine.total; i++) {
-            totalPrice += dishLine.dishes[i].getPrice();
+        for (int i = 0; i < APP.dishLine.total; i++) {
+            totalPrice += APP.dishLine.dishes[i].getPrice();
         }
         System.out.println("Total Price: " + totalPrice + " ¥");
     }
@@ -83,7 +81,7 @@ public class Customer extends User {
         System.out.print("How many dishes would you like to have in your Menu?  ");
         int numberDishes = input.nextInt();
 
-        dishLine = new StoreDishes();
+        APP.dishLine = new StoreDishes();
 
         //ask the user for the details of the products and add them to the order
         for (int i = 0; i < numberDishes; i++) {
@@ -95,20 +93,20 @@ public class Customer extends User {
         System.out.println("Enter the Dish Name:  ");
         String dishName = input.next();
         //check whether the dish exist in the storeDishes
-        int index = storeDishes.checkUserPosition(dishName);
+        int index = APP.storeDishes.checkUserPosition(dishName);
         if (index == -1) {
             System.out.println("Invalid Dish Name, Try again ");
             orderDish();
         }
         //Check whether the dish has been ordered
-        if (dishLine.checkUserPosition(dishName) >= 0) {
+        if (APP.dishLine.checkUserPosition(dishName) >= 0) {
             System.out.println("Already in Dish Line, Try again ");
             orderDish();
         }
         //Add the dish into the DishLine
-        dishLine.add(storeDishes.dishes[index]);
+        APP.dishLine.add(APP.storeDishes.dishes[index]);
         System.out.println("Order Successfully ");
-        System.out.println("Current Ordered Dish Line: " + dishLine.listDishes());
+        System.out.println("Current Ordered Dish Line: " + APP.dishLine.listDishes());
 
     }
 
@@ -122,31 +120,30 @@ public class Customer extends User {
         for (int i = 0; i < numberDishes; i++) {
             removeDish();
         }
-        System.out.println("Remove Dish Successfully");
     }
 
     private void removeDish() {
         input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
         System.out.println("Current Menu:");
-        System.out.println(dishLine.listDishes());
+        System.out.println(APP.dishLine.listDishes());
 
         System.out.println("Enter the Dish Name that you would like to remove:  ");
         String name = input.next();
 
         //check whether the dish Customer want to remove exist in the dishLine
-        int index = dishLine.checkUserPosition(name);
+        int index = APP.dishLine.checkUserPosition(name);
         if ( index == -1) {
             System.out.println("Not in the Dish Line");
             removeDish();
         }
 
-        dishLine.dishes[index] = null;
+        APP.dishLine.dishes[index] = null;
         System.out.println("Dish Remove Successfully");
 
         //update the total number of dishLine
-        for (int i = index; i < dishLine.total - 1; i++) {
-            dishLine.dishes[i] = dishLine.dishes[i + 1];
-            dishLine.total--;
+        for (int i = index; i < APP.dishLine.total - 1; i++) {
+            APP.dishLine.dishes[i] = APP.dishLine.dishes[i + 1];
+            APP.dishLine.total--;
         }
     }
 }
