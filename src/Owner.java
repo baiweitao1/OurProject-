@@ -107,8 +107,8 @@ public class Owner extends User {
         if (isFound) {
             System.out.println("Searched Dish Exist.");
             System.out.print("""
-                        Update the Name to
-                        ==>>""");
+                    Update the Name to
+                    ==>>""");
             String newName = input.next();
             APP.storeDishes.dishes[index].setDishName(newName);
             System.out.println("Update the Price to ->");

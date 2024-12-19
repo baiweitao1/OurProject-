@@ -20,6 +20,7 @@ public class StoreDishes {
 
     /**
      * If there is space available, add the dish object, passed as a parameter, to the array.
+     *
      * @param dish Dish object to be added to the array.
      * @return Status of the add; true for success, false for fail.
      */
@@ -37,6 +38,7 @@ public class StoreDishes {
      * This method builds and returns a String containing all the products in the array.
      * For each product in the array, the associated index number is included.
      * If no dishes are stored in the array, the String "No dishes in the store" is returned.
+     *
      * @return A String containing all the dishes in the array, or "No dishes in the store",
      * if empty.
      */
@@ -54,6 +56,7 @@ public class StoreDishes {
 
     /**
      * This method builds and returns an int which show the position of the Customer wanted Dish in the Menu
+     *
      * @param dishName
      * @return The index of the Customer wanted Dish,
      * if the wanted Dish exist in the Menu, then print out "Searched Dish found "

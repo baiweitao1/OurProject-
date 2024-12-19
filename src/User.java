@@ -14,6 +14,7 @@ public class User {
 
     /**
      * get username
+     *
      * @return username
      */
     public String getUsername() {
@@ -22,6 +23,7 @@ public class User {
 
     /**
      * set username
+     *
      * @param username
      */
     public void setUsername(String username) {
@@ -30,6 +32,7 @@ public class User {
 
     /**
      * get password
+     *
      * @return password
      */
     public int getPassword() {
@@ -38,6 +41,7 @@ public class User {
 
     /**
      * set password
+     *
      * @param password
      */
     public void setPassword(int password) {
@@ -46,6 +50,7 @@ public class User {
 
     /**
      * get boolean which show the user's identity
+     *
      * @return isOwner
      */
     public boolean isIsOwner() {
@@ -54,6 +59,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param isOwner
      */
     public void setIsOwner(boolean isOwner) {

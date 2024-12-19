@@ -38,6 +38,7 @@ public class StoreUsers {
      * This method builds and returns a String containing all the products in the array.
      * For each product in the array, the associated index number is included.
      * If no user are stored in the array, the String "No users in the store" is returned.
+     *
      * @return A String containing all the dishes in the array, or "No users in the store",
      * if empty.
      */
@@ -55,6 +56,7 @@ public class StoreUsers {
 
     /**
      * This method builds and returns an int which show the position of the user in the users array
+     *
      * @param userName
      * @return The index where the user is stored in the array,
      * if the wanted user exist in the users array, then print out "Searched User found "

@@ -132,7 +132,7 @@ public class Customer extends User {
 
         //check whether the dish Customer want to remove exist in the dishLine
         int index = APP.dishLine.checkUserPosition(name);
-        if ( index == -1) {
+        if (index == -1) {
             System.out.println("Not in the Dish Line");
             removeDish();
         }

@@ -12,10 +12,10 @@ public class Dish {
     /**
      * Constructor for objects of class Dish
      *
-     * @param dishName            DishName of the dish
-     * @param price               Price of the dish
-     * @param flavor              Flavor of the dish
-     * This is for Owner
+     * @param dishName DishName of the dish
+     * @param price    Price of the dish
+     * @param flavor   Flavor of the dish
+     *                 This is for Owner
      */
     public Dish(String dishName, double price, String flavor) {
         this.dishName = dishName;

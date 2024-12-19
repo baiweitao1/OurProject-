@@ -8,7 +8,7 @@ public class APP {
 
     public static void main(String[] args) {
         new APP();
-        }
+    }
 
     /**
      * The first User must be the Owner. In this way, the storeDish array will store some available dishes.
@@ -58,12 +58,12 @@ public class APP {
 
     private static int mainMenu() {
         System.out.print("""
-                    User's Menu
-                    ---------
-                       1) Add a User
-                       2) Print the Current Users
-                       0) Exit
-                    ==>> """);
+                User's Menu
+                ---------
+                   1) Add a User
+                   2) Print the Current Users
+                   0) Exit
+                ==>> """);
         int option = sc.nextInt();
         return option;
     }
@@ -121,7 +121,7 @@ public class APP {
 
         //check whether the dish Customer want to remove exist in the dishLine
         int index = dishLine.checkUserPosition(name);
-        if ( index == -1) {
+        if (index == -1) {
             System.out.println("Not in the User Line");
             removeUsers();
         }
